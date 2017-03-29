@@ -6,16 +6,13 @@
 #   -v $HOME/.rainbow_config.json:/root/.rainbow_config.json \
 #   --name rainbowstream \
 
-FROM python:2-alpine
-LABEL maintainer "Jessie Frazelle <jess@linux.com>"
+FROM ubuntu:16.04
+LABEL maintainer "Alan Mutschelknaus alanmutsch@gmail.com"
 
-RUN apk --no-cache add \
-	build-base \
-	ca-certificates \
-	freetype \
-	freetype-dev \
-	openjpeg-dev \
-	zlib-dev
+RUN apt-get update && apt-get install -y \
+        python \
+        python-pip \
+	ca-certificates 
 
 RUN USER=root pip install \
 	 pillow==2.8.0 \
